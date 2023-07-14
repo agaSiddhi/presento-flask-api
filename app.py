@@ -32,5 +32,12 @@ def index():
 
   return send_file(file_path, as_attachment=True)
 
+@app.route('/display')
+@cross_origin()
+def index():
+  file_path = 'my_presentation.pptx'
+
+  return send_file(file_path, as_attachment=False)
+
 
 app.run(host='0.0.0.0', port=5000, debug=True)
