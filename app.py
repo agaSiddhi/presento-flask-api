@@ -1,8 +1,10 @@
 from flask import Flask, send_file
+from flask_cors import CORS, cross_origin
 from pptx import Presentation
 import collections.abc
 
 app = Flask(__name__)
+cors = CORS(app)
 
 # Create a presentation object
 presentation = Presentation()
@@ -23,6 +25,7 @@ presentation.save("my_presentation.pptx")
 
 
 @app.route('/')
+@cross_origin()
 def index():
   file_path = 'my_presentation.pptx'
 
