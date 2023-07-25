@@ -9,7 +9,7 @@ initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 
 app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
-CORS(app)
+ cors = CORS(app, resources={r"/*": {"origins": "https://presento-app-shared.siddhiagarwal3.repl.co"}})
 
 @app.route("/", methods=["POST", "OPTIONS"])
 def make():
