@@ -1,7 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from pptx import Presentation
-import collections.abc
 from firebase_admin import credentials, initialize_app, storage
 
 cred = credentials.Certificate("firebase_credentials.json")
@@ -10,9 +9,12 @@ initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 
 app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
+cors = CORS(app)
+
+
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/", methods=["POST"])
 @cross_origin()
 def make():
     def makePPT(data):
@@ -48,7 +50,12 @@ def make():
     blob.upload_from_filename(file_path)
     blob.make_public()
 
-    return blob.public_url
+    data = jsonify({"url": blob.public_url})
+    data.headers.add("Access-Control-Allow-Origin", "*")
+    data.headers.add('Access-Control-Allow-Methods', 'GET, POST')
+    data.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+
+    return data
 
 
 app.run(host="0.0.0.0", port=5000, debug=True)
