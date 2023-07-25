@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from pptx import Presentation
+import collections.abc
 from firebase_admin import credentials, initialize_app, storage
 
 cred = credentials.Certificate("firebase_credentials.json")
