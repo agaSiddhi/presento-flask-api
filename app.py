@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
 CORS(app)
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["POST", "OPTIONS"])
 def make():
     def makePPT(data):
         def _add_leveled_bullet(_placeholder, _text, level=0):
