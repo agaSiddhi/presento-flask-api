@@ -4,7 +4,7 @@ from pptx import Presentation
 from firebase_admin import credentials, initialize_app, storage
 
 cred = credentials.Certificate("firebase_credentials.json")
-initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com/"})
+initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 
 app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
