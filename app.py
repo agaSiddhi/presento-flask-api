@@ -8,14 +8,12 @@ initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 
 app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
-cors = CORS(app)
-
-
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/", methods=["POST"])
-# @cross_origin()
+@cross_origin()
 def make():
+    @cross_origin()
     def makePPT(data):
         def _add_leveled_bullet(_placeholder, _text, level=0):
             _prg = _placeholder.text_frame.add_paragraph()
@@ -52,7 +50,7 @@ def make():
     data = jsonify({"url": blob.public_url})
     data.headers.add("Access-Control-Allow-Origin", "*")
     data.headers.add('Access-Control-Allow-Methods', 'GET, POST')
-    data.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    data.headers.add('Access-Control-Allow-Headers', 'Content-Type')
 
     return data
 
