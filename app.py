@@ -5,11 +5,10 @@ import collections.abc
 from firebase_admin import credentials, initialize_app, storage
 
 cred = credentials.Certificate("firebase_credentials.json")
-app = initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
+initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 
 
 app = Flask(__name__)
-cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
