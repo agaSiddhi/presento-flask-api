@@ -12,7 +12,6 @@ app.config["CORS_HEADERS"] = "Content-Type"
 CORS(app)
 
 @app.route("/", methods=["POST"])
-@cross_origin()
 def make():
     @cross_origin()
     def makePPT(data):
