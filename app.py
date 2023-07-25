@@ -52,7 +52,7 @@ def makePPT(data):
 
 @app.route('/',methods=['POST'])
 @cross_origin()
-def index():
+def make():
   json_data = request.get_json()
   makePPT(json_data)
   file_path = 'my_presentation.pptx'
