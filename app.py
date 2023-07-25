@@ -15,7 +15,7 @@ cors = CORS(app)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/", methods=["POST"])
-@cross_origin()
+# @cross_origin()
 def make():
     def makePPT(data):
         def _add_leveled_bullet(_placeholder, _text, level=0):
