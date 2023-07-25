@@ -40,6 +40,7 @@ def make():
         prs.save("my_presentation.pptx")
 
     json_data = request.get_json()
+    print(json_data)
     makePPT(json_data)
     file_path = "my_presentation.pptx"
 
@@ -48,8 +49,7 @@ def make():
     blob.upload_from_filename(file_path)
     blob.make_public()
 
-    data = jsonify({"url": blob.public_url})
-    data.headers.add("Access-Control-Allow-Origin", "*")
+    data = jsonify({ "url" : blob.public_url })
 
     return data
 
