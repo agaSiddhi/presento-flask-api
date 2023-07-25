@@ -49,7 +49,7 @@ def make():
       for j in range(len(data["slide"][i]["points"])):
         _add_leveled_bullet(subtitle,data["slide"][i]["points"][j] , 0)
     # Save the presentation to a file
-    prs.save("myPpresentation.pptx")
+    prs.save("my_presentation.pptx")
 
   
   json_data = request.get_json()
