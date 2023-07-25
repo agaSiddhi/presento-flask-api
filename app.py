@@ -49,8 +49,6 @@ def make():
 
     data = jsonify({"url": blob.public_url})
     data.headers.add("Access-Control-Allow-Origin", "*")
-    data.headers.add('Access-Control-Allow-Methods', 'GET, POST')
-    data.headers.add('Access-Control-Allow-Headers', 'Content-Type')
 
     return data
 
