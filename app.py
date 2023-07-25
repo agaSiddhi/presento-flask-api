@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["POST", "GET"])
 @cross_origin()
 def make():
     def makePPT(data):
