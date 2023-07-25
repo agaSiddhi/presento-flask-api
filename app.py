@@ -11,7 +11,7 @@ app = initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 app = Flask(__name__)
 cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
-
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/", methods=["POST"])
 @cross_origin()
