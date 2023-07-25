@@ -13,7 +13,6 @@ CORS(app)
 
 @app.route("/", methods=["POST"])
 def make():
-    @cross_origin()
     def makePPT(data):
         def _add_leveled_bullet(_placeholder, _text, level=0):
             _prg = _placeholder.text_frame.add_paragraph()
@@ -52,5 +51,5 @@ def make():
 
     return data
 
-
-app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ = "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
