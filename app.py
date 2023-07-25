@@ -8,10 +8,9 @@ cred = credentials.Certificate("firebase_credentials.json")
 initialize_app(cred, {"storageBucket": "presento-1d9cd.appspot.com"})
 
 app = Flask(__name__)
-app.config["CORS_HEADERS"] = "Content-Type"
-cors = CORS(app, resources={r"/*": {"origins": "https://presento-app-shared.siddhiagarwal3.repl.co"}})
+cors = CORS(app)
 
-@app.route("/", methods=["POST", "OPTIONS"])
+@app.route("/", methods=["POST", "GET", "PUT", "OPTIONS"])
 def make():
     def makePPT(data):
         def _add_leveled_bullet(_placeholder, _text, level=0):
@@ -46,10 +45,7 @@ def make():
     blob = bucket.blob(file_path)
     blob.upload_from_filename(file_path)
     blob.make_public()
-
-    data = jsonify({ "url" : blob.public_url })
-
-    return data
+    return 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
