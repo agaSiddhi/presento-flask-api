@@ -97,7 +97,7 @@ def makePPT(data):
     for j in range(len(data["slide"][i]["points"])):
       _add_leveled_bullet(subtitle,data["slide"][i]["points"][j] , 0)
   # Save the presentation to a file
-  prs.save("myPpresentation.pptx")
+  prs.save("SID_presentation.pptx")
 
 
 
@@ -105,11 +105,12 @@ def makePPT(data):
 @cross_origin()
 def index():
   json_data = request.get_json()
-  return json_data
-  # makePPT(json_data)
-  # file_path = 'my_presentation.pptx'
+  # return json_data
 
-  # return send_file(file_path, as_attachment=True)
+  makePPT(json_data)
+  file_path = 'SID_presentation.pptx'
+
+  return send_file(file_path, as_attachment=True)
 
 # @app.route('/display')
 # @cross_origin()
