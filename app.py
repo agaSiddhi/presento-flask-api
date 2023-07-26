@@ -45,7 +45,7 @@ def make():
     blob = bucket.blob(file_path)
     blob.upload_from_filename(file_path)
     blob.make_public()
-    return 
+    return blob.public_url
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
